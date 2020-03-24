@@ -8,11 +8,13 @@ class BluetoothDevice {
   final DeviceIdentifier id;
   final String name;
   final BluetoothDeviceType type;
+  final BluetoothDeviceMajorClass majorClass;
 
   BluetoothDevice.fromProto(protos.BluetoothDevice p)
       : id = new DeviceIdentifier(p.remoteId),
         name = p.name,
-        type = BluetoothDeviceType.values[p.type.value];
+        type = BluetoothDeviceType.values[p.type.value],
+        majorClass = BluetoothDeviceMajorClass.values[p.majorClass.value];
 
   BehaviorSubject<bool> _isDiscoveringServices = BehaviorSubject.seeded(false);
   Stream<bool> get isDiscoveringServices => _isDiscoveringServices.stream;
@@ -143,5 +145,7 @@ class BluetoothDevice {
 }
 
 enum BluetoothDeviceType { unknown, classic, le, dual }
+
+enum BluetoothDeviceMajorClass { audio_video, computer, health, imaging, misc, networking, peripheral, phone, toy, wearable, uncategorized }
 
 enum BluetoothDeviceState { disconnected, connecting, connected, disconnecting }

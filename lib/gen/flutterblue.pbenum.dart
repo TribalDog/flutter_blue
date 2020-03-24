@@ -53,6 +53,39 @@ class BluetoothDevice_Type extends $pb.ProtobufEnum {
   const BluetoothDevice_Type._($core.int v, $core.String n) : super(v, n);
 }
 
+class BluetoothDevice_MajorClass extends $pb.ProtobufEnum {
+  static const BluetoothDevice_MajorClass AUDIO_VIDEO = BluetoothDevice_MajorClass._(0, 'AUDIO_VIDEO');
+  static const BluetoothDevice_MajorClass COMPUTER = BluetoothDevice_MajorClass._(1, 'COMPUTER');
+  static const BluetoothDevice_MajorClass HEALTH = BluetoothDevice_MajorClass._(2, 'HEALTH');
+  static const BluetoothDevice_MajorClass IMAGING = BluetoothDevice_MajorClass._(3, 'IMAGING');
+  static const BluetoothDevice_MajorClass MISC = BluetoothDevice_MajorClass._(4, 'MISC');
+  static const BluetoothDevice_MajorClass NETWORKING = BluetoothDevice_MajorClass._(5, 'NETWORKING');
+  static const BluetoothDevice_MajorClass PERIPHERAL = BluetoothDevice_MajorClass._(6, 'PERIPHERAL');
+  static const BluetoothDevice_MajorClass PHONE = BluetoothDevice_MajorClass._(7, 'PHONE');
+  static const BluetoothDevice_MajorClass TOY = BluetoothDevice_MajorClass._(8, 'TOY');
+  static const BluetoothDevice_MajorClass UNCATEGORIZED = BluetoothDevice_MajorClass._(9, 'UNCATEGORIZED');
+  static const BluetoothDevice_MajorClass WEARABLE = BluetoothDevice_MajorClass._(10, 'WEARABLE');
+
+  static const $core.List<BluetoothDevice_MajorClass> values = <BluetoothDevice_MajorClass> [
+    AUDIO_VIDEO,
+    COMPUTER,
+    HEALTH,
+    IMAGING,
+    MISC,
+    NETWORKING,
+    PERIPHERAL,
+    PHONE,
+    TOY,
+    UNCATEGORIZED,
+    WEARABLE,
+  ];
+
+  static final $core.Map<$core.int, BluetoothDevice_MajorClass> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static BluetoothDevice_MajorClass valueOf($core.int value) => _byValue[value];
+
+  const BluetoothDevice_MajorClass._($core.int v, $core.String n) : super(v, n);
+}
+
 class WriteCharacteristicRequest_WriteType extends $pb.ProtobufEnum {
   static const WriteCharacteristicRequest_WriteType WITH_RESPONSE = WriteCharacteristicRequest_WriteType._(0, 'WITH_RESPONSE');
   static const WriteCharacteristicRequest_WriteType WITHOUT_RESPONSE = WriteCharacteristicRequest_WriteType._(1, 'WITHOUT_RESPONSE');

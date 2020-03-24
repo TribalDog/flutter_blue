@@ -62,9 +62,24 @@ message BluetoothDevice {
     DUAL = 3;
   };
 
+  enum MajorClass {
+    AUDIO_VIDEO = 0;
+    COMPUTER = 1;
+    HEALTH = 2;
+    IMAGING = 3;
+    MISC = 4;
+    NETWORKING = 5;
+    PERIPHERAL = 6;
+    PHONE = 7;
+    TOY = 8;
+    UNCATEGORIZED = 9;
+    WEARABLE = 10;
+  };
+
   string remote_id = 1;
   string name = 2;
   Type type = 3;
+  MajorClass majorClass = 4;
 }
 
 message BluetoothService {

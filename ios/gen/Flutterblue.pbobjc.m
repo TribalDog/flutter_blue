@@ -8,7 +8,7 @@
 #endif
 
 #if GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS
- #import <Protobuf/GPBProtocolBuffers_RuntimeSupport.h>
+ #import <protobuf/GPBProtocolBuffers_RuntimeSupport.h>
 #else
  #import "GPBProtocolBuffers_RuntimeSupport.h"
 #endif
@@ -477,10 +477,12 @@ typedef struct ProtosConnectRequest__storage_ {
 @dynamic remoteId;
 @dynamic name;
 @dynamic type;
+@dynamic majorClass;
 
 typedef struct ProtosBluetoothDevice__storage_ {
   uint32_t _has_storage_[1];
   ProtosBluetoothDevice_Type type;
+  ProtosBluetoothDevice_MajorClass majorClass;
   NSString *remoteId;
   NSString *name;
 } ProtosBluetoothDevice__storage_;
@@ -518,6 +520,15 @@ typedef struct ProtosBluetoothDevice__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
         .dataType = GPBDataTypeEnum,
       },
+      {
+        .name = "majorClass",
+        .dataTypeSpecific.enumDescFunc = ProtosBluetoothDevice_MajorClass_EnumDescriptor,
+        .number = ProtosBluetoothDevice_FieldNumber_MajorClass,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(ProtosBluetoothDevice__storage_, majorClass),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[ProtosBluetoothDevice class]
@@ -527,6 +538,11 @@ typedef struct ProtosBluetoothDevice__storage_ {
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(ProtosBluetoothDevice__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\004\n\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     #if defined(DEBUG) && DEBUG
       NSAssert(descriptor == nil, @"Startup recursed!");
     #endif  // DEBUG
@@ -546,6 +562,18 @@ int32_t ProtosBluetoothDevice_Type_RawValue(ProtosBluetoothDevice *message) {
 void SetProtosBluetoothDevice_Type_RawValue(ProtosBluetoothDevice *message, int32_t value) {
   GPBDescriptor *descriptor = [ProtosBluetoothDevice descriptor];
   GPBFieldDescriptor *field = [descriptor fieldWithNumber:ProtosBluetoothDevice_FieldNumber_Type];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+int32_t ProtosBluetoothDevice_MajorClass_RawValue(ProtosBluetoothDevice *message) {
+  GPBDescriptor *descriptor = [ProtosBluetoothDevice descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:ProtosBluetoothDevice_FieldNumber_MajorClass];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetProtosBluetoothDevice_MajorClass_RawValue(ProtosBluetoothDevice *message, int32_t value) {
+  GPBDescriptor *descriptor = [ProtosBluetoothDevice descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:ProtosBluetoothDevice_FieldNumber_MajorClass];
   GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
 }
 
@@ -582,6 +610,61 @@ BOOL ProtosBluetoothDevice_Type_IsValidValue(int32_t value__) {
     case ProtosBluetoothDevice_Type_Classic:
     case ProtosBluetoothDevice_Type_Le:
     case ProtosBluetoothDevice_Type_Dual:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - Enum ProtosBluetoothDevice_MajorClass
+
+GPBEnumDescriptor *ProtosBluetoothDevice_MajorClass_EnumDescriptor(void) {
+  static _Atomic(GPBEnumDescriptor*) descriptor = nil;
+  if (!descriptor) {
+    static const char *valueNames =
+        "AudioVideo\000Computer\000Health\000Imaging\000Misc\000"
+        "Networking\000Peripheral\000Phone\000Toy\000Uncatego"
+        "rized\000Wearable\000";
+    static const int32_t values[] = {
+        ProtosBluetoothDevice_MajorClass_AudioVideo,
+        ProtosBluetoothDevice_MajorClass_Computer,
+        ProtosBluetoothDevice_MajorClass_Health,
+        ProtosBluetoothDevice_MajorClass_Imaging,
+        ProtosBluetoothDevice_MajorClass_Misc,
+        ProtosBluetoothDevice_MajorClass_Networking,
+        ProtosBluetoothDevice_MajorClass_Peripheral,
+        ProtosBluetoothDevice_MajorClass_Phone,
+        ProtosBluetoothDevice_MajorClass_Toy,
+        ProtosBluetoothDevice_MajorClass_Uncategorized,
+        ProtosBluetoothDevice_MajorClass_Wearable,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(ProtosBluetoothDevice_MajorClass)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:ProtosBluetoothDevice_MajorClass_IsValidValue];
+    GPBEnumDescriptor *expected = nil;
+    if (!atomic_compare_exchange_strong(&descriptor, &expected, worker)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL ProtosBluetoothDevice_MajorClass_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case ProtosBluetoothDevice_MajorClass_AudioVideo:
+    case ProtosBluetoothDevice_MajorClass_Computer:
+    case ProtosBluetoothDevice_MajorClass_Health:
+    case ProtosBluetoothDevice_MajorClass_Imaging:
+    case ProtosBluetoothDevice_MajorClass_Misc:
+    case ProtosBluetoothDevice_MajorClass_Networking:
+    case ProtosBluetoothDevice_MajorClass_Peripheral:
+    case ProtosBluetoothDevice_MajorClass_Phone:
+    case ProtosBluetoothDevice_MajorClass_Toy:
+    case ProtosBluetoothDevice_MajorClass_Uncategorized:
+    case ProtosBluetoothDevice_MajorClass_Wearable:
       return YES;
     default:
       return NO;

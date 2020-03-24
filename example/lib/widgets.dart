@@ -18,6 +18,10 @@ class ScanResultTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
+            result.device.majorClass.toString(),
+            overflow: TextOverflow.ellipsis,
+          ),
+          Text(
             result.device.name,
             overflow: TextOverflow.ellipsis,
           ),

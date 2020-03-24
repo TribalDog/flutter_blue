@@ -95,8 +95,9 @@ const BluetoothDevice$json = const {
     const {'1': 'remote_id', '3': 1, '4': 1, '5': 9, '10': 'remoteId'},
     const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'type', '3': 3, '4': 1, '5': 14, '6': '.BluetoothDevice.Type', '10': 'type'},
+    const {'1': 'majorClass', '3': 4, '4': 1, '5': 14, '6': '.BluetoothDevice.MajorClass', '10': 'majorClass'},
   ],
-  '4': const [BluetoothDevice_Type$json],
+  '4': const [BluetoothDevice_Type$json, BluetoothDevice_MajorClass$json],
 };
 
 const BluetoothDevice_Type$json = const {
@@ -106,6 +107,23 @@ const BluetoothDevice_Type$json = const {
     const {'1': 'CLASSIC', '2': 1},
     const {'1': 'LE', '2': 2},
     const {'1': 'DUAL', '2': 3},
+  ],
+};
+
+const BluetoothDevice_MajorClass$json = const {
+  '1': 'MajorClass',
+  '2': const [
+    const {'1': 'AUDIO_VIDEO', '2': 0},
+    const {'1': 'COMPUTER', '2': 1},
+    const {'1': 'HEALTH', '2': 2},
+    const {'1': 'IMAGING', '2': 3},
+    const {'1': 'MISC', '2': 4},
+    const {'1': 'NETWORKING', '2': 5},
+    const {'1': 'PERIPHERAL', '2': 6},
+    const {'1': 'PHONE', '2': 7},
+    const {'1': 'TOY', '2': 8},
+    const {'1': 'UNCATEGORIZED', '2': 9},
+    const {'1': 'WEARABLE', '2': 10},
   ],
 };
 

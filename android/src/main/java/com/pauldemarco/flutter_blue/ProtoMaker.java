@@ -5,6 +5,7 @@
 package com.pauldemarco.flutter_blue;
 
 import android.annotation.TargetApi;
+import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -112,6 +113,41 @@ public class ProtoMaker {
                 break;
             default:
                 p.setType(Protos.BluetoothDevice.Type.UNKNOWN);
+                break;
+        }
+        switch(device.getBluetoothClass().getMajorDeviceClass()){
+            case BluetoothClass.Device.Major.AUDIO_VIDEO:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.AUDIO_VIDEO);
+                break;
+            case BluetoothClass.Device.Major.COMPUTER:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.COMPUTER);
+                break;
+            case BluetoothClass.Device.Major.HEALTH:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.HEALTH);
+                break;
+            case BluetoothClass.Device.Major.IMAGING:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.IMAGING);
+                break;
+            case BluetoothClass.Device.Major.MISC:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.MISC);
+                break;
+            case BluetoothClass.Device.Major.NETWORKING:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.NETWORKING);
+                break;
+            case BluetoothClass.Device.Major.PERIPHERAL:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.PERIPHERAL);
+                break;
+            case BluetoothClass.Device.Major.PHONE:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.PHONE);
+                break;
+            case BluetoothClass.Device.Major.TOY:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.TOY);
+                break;
+            case BluetoothClass.Device.Major.WEARABLE:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.WEARABLE);
+                break;
+            default:
+                p.setMajorClass(Protos.BluetoothDevice.MajorClass.UNCATEGORIZED);
                 break;
         }
         return p.build();

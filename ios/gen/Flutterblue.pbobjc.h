@@ -8,7 +8,7 @@
 #endif
 
 #if GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS
- #import <Protobuf/GPBProtocolBuffers.h>
+ #import <protobuf/GPBProtocolBuffers.h>
 #else
  #import "GPBProtocolBuffers.h"
 #endif
@@ -88,6 +88,36 @@ GPBEnumDescriptor *ProtosBluetoothDevice_Type_EnumDescriptor(void);
  * the time this source was generated.
  **/
 BOOL ProtosBluetoothDevice_Type_IsValidValue(int32_t value);
+
+#pragma mark - Enum ProtosBluetoothDevice_MajorClass
+
+typedef GPB_ENUM(ProtosBluetoothDevice_MajorClass) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  ProtosBluetoothDevice_MajorClass_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  ProtosBluetoothDevice_MajorClass_AudioVideo = 0,
+  ProtosBluetoothDevice_MajorClass_Computer = 1,
+  ProtosBluetoothDevice_MajorClass_Health = 2,
+  ProtosBluetoothDevice_MajorClass_Imaging = 3,
+  ProtosBluetoothDevice_MajorClass_Misc = 4,
+  ProtosBluetoothDevice_MajorClass_Networking = 5,
+  ProtosBluetoothDevice_MajorClass_Peripheral = 6,
+  ProtosBluetoothDevice_MajorClass_Phone = 7,
+  ProtosBluetoothDevice_MajorClass_Toy = 8,
+  ProtosBluetoothDevice_MajorClass_Uncategorized = 9,
+  ProtosBluetoothDevice_MajorClass_Wearable = 10,
+};
+
+GPBEnumDescriptor *ProtosBluetoothDevice_MajorClass_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL ProtosBluetoothDevice_MajorClass_IsValidValue(int32_t value);
 
 #pragma mark - Enum ProtosWriteCharacteristicRequest_WriteType
 
@@ -288,6 +318,7 @@ typedef GPB_ENUM(ProtosBluetoothDevice_FieldNumber) {
   ProtosBluetoothDevice_FieldNumber_RemoteId = 1,
   ProtosBluetoothDevice_FieldNumber_Name = 2,
   ProtosBluetoothDevice_FieldNumber_Type = 3,
+  ProtosBluetoothDevice_FieldNumber_MajorClass = 4,
 };
 
 @interface ProtosBluetoothDevice : GPBMessage
@@ -297,6 +328,8 @@ typedef GPB_ENUM(ProtosBluetoothDevice_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *name;
 
 @property(nonatomic, readwrite) ProtosBluetoothDevice_Type type;
+
+@property(nonatomic, readwrite) ProtosBluetoothDevice_MajorClass majorClass;
 
 @end
 
@@ -311,6 +344,18 @@ int32_t ProtosBluetoothDevice_Type_RawValue(ProtosBluetoothDevice *message);
  * was generated.
  **/
 void SetProtosBluetoothDevice_Type_RawValue(ProtosBluetoothDevice *message, int32_t value);
+
+/**
+ * Fetches the raw value of a @c ProtosBluetoothDevice's @c majorClass property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t ProtosBluetoothDevice_MajorClass_RawValue(ProtosBluetoothDevice *message);
+/**
+ * Sets the raw value of an @c ProtosBluetoothDevice's @c majorClass property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetProtosBluetoothDevice_MajorClass_RawValue(ProtosBluetoothDevice *message, int32_t value);
 
 #pragma mark - ProtosBluetoothService
 
